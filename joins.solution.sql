@@ -55,3 +55,11 @@ SELECT SUM("warehouse_product"."on_hand") AS "On-hand diet pepsi" FROM
 JOIN "products" 
 	ON "warehouse_product"."product_id" = "products"."id"
 WHERE "products"."description" = 'diet pepsi';
+
+--	How much was the total cost for each order?
+
+SELECT "orders"."id" AS "Order ID", SUM("products"."unit_price") AS "Order Total" FROM
+"orders"
+JOIN "line_items" ON "orders"."id" = "line_items"."order_id"
+JOIN "products" ON "line_items"."product_id" = "products"."id"
+GROUP BY "orders"."id";
