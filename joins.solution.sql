@@ -36,3 +36,13 @@ SELECT "customers"."first_name", "customers"."last_name", COUNT(*) FROM
 LEFT JOIN "customers" 
 	ON "addresses"."customer_id" = "customers"."id"
 GROUP BY "customers"."id";
+
+-- 	How many customers do we have?
+
+SELECT COUNT(*) FROM
+"customers";
+
+--	How many products do we carry?
+
+SELECT COUNT(*) FROM 
+"products";
