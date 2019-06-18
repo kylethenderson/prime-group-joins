@@ -28,3 +28,11 @@ JOIN "warehouse_product" ON "warehouse"."id" = "warehouse_product"."warehouse_id
 JOIN "products" ON "warehouse_product"."product_id" = "products"."id"
 WHERE "products"."description" = 'diet pepsi';
 
+-- 	Get the number of orders for each customer. NOTE: It is OK if those without orders are not included in results.
+
+SELECT "customers"."first_name", "customers"."last_name", COUNT(*) FROM 
+"orders" LEFT JOIN "addresses" 
+	ON "orders"."address_id" = "addresses"."id"
+LEFT JOIN "customers" 
+	ON "addresses"."customer_id" = "customers"."id"
+GROUP BY "customers"."id";
